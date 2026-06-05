@@ -2,12 +2,12 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, type ReactNode } from "react";
 import { CustomCursor } from "@/components/CustomCursor";
 
-const BOTTLE_1 = "https://images.unsplash.com/photo-1564419320461-6870880221ad?w=1200&q=80";
-const BOTTLE_2 = "https://images.unsplash.com/photo-1606168094336-48f8b0c5cc59?w=1200&q=80";
-const BOTTLE_3 = "https://images.unsplash.com/photo-1612447687331-c5b9416a2c4d?w=1200&q=80";
-const WATER_BG = "https://images.unsplash.com/photo-1559825481-12a05cc00344?w=1920&q=80";
-const WATER_STORY = "https://images.unsplash.com/photo-1502989642968-94fbdc9eace4?w=1920&q=80";
-const TEAM = "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=1600&q=80";
+const BOTTLE_1 = "/everlynn_bottle_upright.png";
+const BOTTLE_2 = "/everlynn_bottle_glass.png";
+const BOTTLE_3 = "/everlynn_bottle_closeup.png";
+const WATER_BG = "/hero-bg.jpg";
+const WATER_STORY = "/everlynn_water_story.png";
+const TEAM = "/everlynn_giveback.png";
 const VIDEO = "/__l5e/assets-v1/e9494ac5-e1b3-4dd5-9a9d-7243395fb8b5/hero-water.mp4";
 
 const fadeUp = {
@@ -52,15 +52,13 @@ function Hero() {
   const words = headline.split(" ");
   return (
     <section id="top" className="relative h-screen w-full overflow-hidden flex items-center justify-center">
-      <video
-        autoPlay muted loop playsInline
-        className="absolute inset-0 w-full h-full object-cover"
-        poster={WATER_BG}
-      >
-        <source src={VIDEO} type="video/mp4" />
-      </video>
-      <div className="absolute inset-0 bg-gradient-to-b from-royal-deep/80 via-royal-deep/70 to-royal-deep" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#06101F_85%)]" />
+      <img
+        src="/hero-bg.jpg"
+        alt="Everlynn Natural Spring Water Bottle"
+        className="absolute inset-0 w-full h-full object-cover object-center"
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#06101F]/70 via-[#06101F]/60 to-[#06101F]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,#06101F_90%)]" />
 
       <div className="relative z-10 text-center px-6 max-w-6xl">
         <motion.div
