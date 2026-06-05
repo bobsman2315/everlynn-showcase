@@ -8,7 +8,7 @@ const BOTTLE_3 = "https://images.unsplash.com/photo-1612447687331-c5b9416a2c4d?w
 const WATER_BG = "https://images.unsplash.com/photo-1559825481-12a05cc00344?w=1920&q=80";
 const WATER_STORY = "https://images.unsplash.com/photo-1502989642968-94fbdc9eace4?w=1920&q=80";
 const TEAM = "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=1600&q=80";
-const VIDEO = "https://videos.pexels.com/video-files/2491284/2491284-uhd_2560_1440_24fps.mp4";
+const VIDEO = "/__l5e/assets-v1/e9494ac5-e1b3-4dd5-9a9d-7243395fb8b5/hero-water.mp4";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
