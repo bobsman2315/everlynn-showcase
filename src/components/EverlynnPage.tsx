@@ -1,6 +1,7 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, type ReactNode } from "react";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { useRef, useState, useEffect, type ReactNode } from "react";
 import { CustomCursor } from "@/components/CustomCursor";
+import { Menu, X } from "lucide-react";
 
 const BOTTLE_1 = "/everlynn_bottle_upright.png";
 const BOTTLE_2 = "/everlynn_bottle_glass.png";
@@ -31,18 +32,86 @@ function Reveal({ children, delay = 0, className = "" }: { children: ReactNode; 
 }
 
 function Nav() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <header className="fixed top-0 inset-x-0 z-50 px-6 md:px-12 py-6 flex items-center justify-between backdrop-blur-sm bg-[#06101F]/30">
-      <a href="#top" className="font-display text-xl tracking-[0.3em] text-ivory">
-        EVER<span className="text-gold">LYNN</span>
+    <header className="fixed top-0 inset-x-0 z-50 px-6 md:px-12 py-6 flex items-center justify-between backdrop-blur-sm bg-[#06101F]/30 border-b border-white/5">
+      <a href="#top" className="flex items-center z-50">
+        <img src="/logo.png" alt="Everlynn Logo" className="h-7 md:h-8 w-auto object-contain" />
       </a>
+      
+      {/* Desktop Navigation */}
       <nav className="hidden md:flex items-center gap-10 text-[0.7rem] tracking-[0.25em] uppercase text-ivory/70">
         <a href="#story" className="hover:text-gold transition-colors">Story</a>
         <a href="#bottle" className="hover:text-gold transition-colors">Bottle</a>
         <a href="#mission" className="hover:text-gold transition-colors">Mission</a>
         <a href="#contact" className="hover:text-gold transition-colors">Contact</a>
       </nav>
-      <a href="#cta" className="text-[0.7rem] tracking-[0.25em] uppercase text-gold border-b border-gold/40 pb-1">Order</a>
+      
+      {/* Desktop Order Button */}
+      <div className="hidden md:block">
+        <a href="#cta" className="text-[0.7rem] tracking-[0.25em] uppercase text-gold border-b border-gold/40 pb-1">Order</a>
+      </div>
+
+      {/* Mobile Toggle Button */}
+      <button 
+        onClick={() => setIsOpen(!isOpen)}
+        className="md:hidden z-50 text-ivory p-1 focus:outline-none"
+        aria-label="Toggle Menu"
+      >
+        {isOpen ? <X size={20} /> : <Menu size={20} />}
+      </button>
+
+      {/* Mobile Menu Drawer */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 bg-[#06101F] z-40 flex flex-col justify-center px-10 gap-8"
+          >
+            <div className="flex flex-col gap-6 text-xl tracking-[0.2em] uppercase font-display">
+              <a 
+                href="#story" 
+                onClick={() => setIsOpen(false)}
+                className="text-ivory hover:text-gold transition-colors border-b border-white/5 pb-4"
+              >
+                Story
+              </a>
+              <a 
+                href="#bottle" 
+                onClick={() => setIsOpen(false)}
+                className="text-ivory hover:text-gold transition-colors border-b border-white/5 pb-4"
+              >
+                Bottle
+              </a>
+              <a 
+                href="#mission" 
+                onClick={() => setIsOpen(false)}
+                className="text-ivory hover:text-gold transition-colors border-b border-white/5 pb-4"
+              >
+                Mission
+              </a>
+              <a 
+                href="#contact" 
+                onClick={() => setIsOpen(false)}
+                className="text-ivory hover:text-gold transition-colors border-b border-white/5 pb-4"
+              >
+                Contact
+              </a>
+            </div>
+            <a 
+              href="#cta" 
+              onClick={() => setIsOpen(false)}
+              className="btn-gold text-center py-4 w-full mt-6"
+            >
+              Order Now
+            </a>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
@@ -126,7 +195,7 @@ function HowItWorks() {
     { n: "03", t: "Sealed", d: "Sealed at source with engineered precision — purity preserved, always." },
   ];
   return (
-    <section className="py-32 md:py-40 px-6 md:px-12 bg-royal-deep relative">
+    <section className="py-20 md:py-40 px-6 md:px-12 bg-royal-deep relative">
       <div className="max-w-7xl mx-auto">
         <Reveal>
           <SectionLabel num="I." label="The Process" />
@@ -159,7 +228,7 @@ function HowItWorks() {
 
 function Comparison() {
   return (
-    <section className="py-32 md:py-40 px-6 md:px-12 bg-ink">
+    <section className="py-20 md:py-40 px-6 md:px-12 bg-ink">
       <div className="max-w-7xl mx-auto">
         <Reveal><SectionLabel num="II." label="The Difference" /></Reveal>
         <Reveal delay={0.1}>
@@ -181,7 +250,7 @@ function Comparison() {
             </ul>
           </Reveal>
 
-          <Reveal delay={0.15} className="bg-card p-10 md:p-16 border-l border-gold/20">
+          <Reveal delay={0.15} className="bg-card p-10 md:p-16 border-t md:border-t-0 md:border-l border-gold/20">
             <p className="eyebrow">Everlynn</p>
             <ul className="mt-10 space-y-6 font-light">
               {["pH-balanced mineral precision", "Premium architectural packaging", "Single-source transparency", "Funds children's wellness"].map((x) => (
@@ -206,9 +275,17 @@ function BottleReveal() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   return (
-    <section id="bottle" ref={ref} className="py-32 md:py-44 px-6 md:px-12 bg-royal-deep relative overflow-hidden">
+    <section id="bottle" ref={ref} className="py-20 md:py-44 px-6 md:px-12 bg-royal-deep relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <Reveal><SectionLabel num="III." label="The Object" /></Reveal>
         <Reveal delay={0.1}>
@@ -219,7 +296,7 @@ function BottleReveal() {
         </Reveal>
 
         <div className="mt-24 grid md:grid-cols-12 gap-8 items-center">
-          <motion.div style={{ y }} className="md:col-span-5">
+          <motion.div style={isMobile ? {} : { y }} className="md:col-span-5">
             <img src={BOTTLE_1} alt="Everlynn glass bottle" className="w-full aspect-[3/4] object-cover" />
           </motion.div>
 
@@ -257,7 +334,7 @@ function Features() {
   ];
   const icons = ["◇", "◈", "◆", "✦"];
   return (
-    <section className="py-32 md:py-40 px-6 md:px-12 bg-ink">
+    <section className="py-20 md:py-40 px-6 md:px-12 bg-ink">
       <div className="max-w-7xl mx-auto">
         <Reveal><SectionLabel num="IV." label="The Standard" /></Reveal>
         <Reveal delay={0.1}>
@@ -287,7 +364,7 @@ function Performance() {
     { t: "Available Everywhere", d: "Distributed across premium hospitality, retail, and direct-to-door delivery.", img: BOTTLE_2, tag: "Nationwide" },
   ];
   return (
-    <section className="py-32 md:py-40 px-6 md:px-12 bg-royal-deep">
+    <section className="py-20 md:py-40 px-6 md:px-12 bg-royal-deep">
       <div className="max-w-7xl mx-auto">
         <Reveal><SectionLabel num="V." label="Engineered" /></Reveal>
         <Reveal delay={0.1}>
@@ -319,7 +396,7 @@ function Performance() {
 
 function Story() {
   return (
-    <section id="story" className="relative py-40 md:py-56 px-6 md:px-12 overflow-hidden">
+    <section id="story" className="relative py-24 md:py-56 px-6 md:px-12 overflow-hidden">
       <div className="absolute inset-0">
         <img src={WATER_STORY} alt="Water" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-royal-deep/85" />
@@ -351,7 +428,7 @@ function Story() {
 
 function MissionVision() {
   return (
-    <section id="mission" className="py-32 md:py-40 px-6 md:px-12 bg-royal-deep">
+    <section id="mission" className="py-20 md:py-40 px-6 md:px-12 bg-royal-deep">
       <div className="max-w-7xl mx-auto">
         <Reveal><SectionLabel num="VII." label="Compass" /></Reveal>
         <div className="mt-16 grid md:grid-cols-2 gap-6">
@@ -380,7 +457,7 @@ function GiveBack() {
     { v: "100%", l: "Certified Partner" },
   ];
   return (
-    <section className="py-32 md:py-40 px-6 md:px-12 bg-ink">
+    <section className="py-20 md:py-40 px-6 md:px-12 bg-ink">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
         <Reveal>
           <SectionLabel num="VIII." label="Social Mission" />
@@ -434,7 +511,7 @@ function Credentials() {
 
 function CTA() {
   return (
-    <section id="cta" className="relative py-40 md:py-56 px-6 md:px-12 overflow-hidden bg-ink">
+    <section id="cta" className="relative py-24 md:py-56 px-6 md:px-12 overflow-hidden bg-ink">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,168,76,0.18),transparent_60%)]" />
       <div className="relative max-w-4xl mx-auto text-center">
         <Reveal>
@@ -467,7 +544,9 @@ function Footer() {
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-12 gap-12">
           <div className="md:col-span-5">
-            <div className="font-display text-3xl tracking-[0.3em]">EVER<span className="text-gold">LYNN</span></div>
+            <div className="flex items-center">
+              <img src="/logo.png" alt="Everlynn Logo" className="h-8 md:h-10 w-auto object-contain" />
+            </div>
             <p className="mt-6 text-ivory/55 font-light italic max-w-sm">
               Every Drop, A Promise of Purity.
             </p>
