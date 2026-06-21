@@ -1,9 +1,25 @@
-import { Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { Link, useLocation } from "@tanstack/react-router";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 
 export function Nav() {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  const isHome = location.pathname === "/";
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 40) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navItems = [
     { to: "/", label: "Home" },
@@ -13,17 +29,22 @@ export function Nav() {
     { to: "/contact", label: "Contact Us" },
   ];
 
+  const isDarkNavbar = isHome && !isScrolled;
+
   return (
-    <header className="fixed top-0 inset-x-0 z-50 px-6 md:px-12 py-5 flex items-center justify-between backdrop-blur-md bg-[#030C1B]/60 border-b border-white/5">
+    <header
+      className={
+        isDarkNavbar
+          ? "dark-section fixed top-0 inset-x-0 z-50 px-6 md:px-12 py-5 flex items-center justify-between transition-all duration-300 bg-transparent border-b border-transparent shadow-none"
+          : "fixed top-0 inset-x-0 z-50 px-6 md:px-12 py-3 md:py-4 flex items-center justify-between transition-all duration-300 backdrop-blur-md bg-background/85 border-b border-border shadow-sm"
+      }
+    >
       <Link to="/" className="flex items-center gap-3 z-50">
         <img
           src="/jalsutra_logo.png"
           alt="Jalsutra Logo"
-          className="h-8 md:h-10 w-auto object-contain"
+          className="h-12 md:h-16 w-auto object-contain"
         />
-        <span className="font-display text-xl md:text-2xl font-bold tracking-wider text-ivory">
-          JALSUTRA
-        </span>
       </Link>
 
       {/* Desktop Navigation */}
@@ -32,9 +53,9 @@ export function Nav() {
           <Link
             key={item.to}
             to={item.to}
-            activeProps={{ className: "text-gold font-medium border-b border-gold/40 pb-0.5" }}
-            inactiveProps={{ className: "text-ivory/80 hover:text-gold" }}
-            className="transition-all duration-300"
+            activeProps={{ className: "text-gold font-semibold border-b border-gold/40 pb-0.5" }}
+            inactiveProps={{ className: "text-foreground/80 hover:text-gold" }}
+            className="transition-all duration-300 font-medium"
           >
             {item.label}
           </Link>
@@ -45,7 +66,7 @@ export function Nav() {
       <div className="hidden md:block">
         <Link
           to="/contact"
-          className="text-[0.72rem] tracking-[0.25em] uppercase text-gold border-b border-gold/20 hover:border-gold pb-1 transition-all"
+          className="text-[0.72rem] tracking-[0.25em] uppercase text-gold border-b border-gold/20 hover:border-gold pb-1 transition-all font-medium"
         >
           Inquire Now
         </Link>
@@ -54,7 +75,7 @@ export function Nav() {
       {/* Mobile Toggle Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="md:hidden z-50 text-ivory p-1 focus:outline-none"
+        className="md:hidden z-50 text-foreground p-1 focus:outline-none"
         aria-label="Toggle Menu"
       >
         {isOpen ? <X size={22} /> : <Menu size={22} />}
@@ -68,7 +89,7 @@ export function Nav() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 bg-[#030C1B] z-40 flex flex-col justify-center px-10 gap-8"
+            className="fixed inset-0 bg-background z-40 flex flex-col justify-center px-10 gap-8"
           >
             <div className="flex flex-col gap-6 text-xl tracking-[0.2em] uppercase font-display">
               {navItems.map((item) => (
@@ -77,10 +98,10 @@ export function Nav() {
                   to={item.to}
                   onClick={() => setIsOpen(false)}
                   activeProps={{
-                    className: "text-gold font-semibold border-b border-white/10 pb-2",
+                    className: "text-gold font-semibold border-b border-border pb-2",
                   }}
                   inactiveProps={{
-                    className: "text-ivory hover:text-gold border-b border-white/5 pb-2",
+                    className: "text-foreground hover:text-gold border-b border-border/40 pb-2",
                   }}
                   className="transition-colors duration-300"
                 >

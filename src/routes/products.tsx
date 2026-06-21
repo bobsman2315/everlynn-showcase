@@ -54,6 +54,7 @@ function ProductsPage() {
       price: "₹80 / Jar",
       useCase: "Homes, corporate offices, clinics, and school dispensers. Durable and robust.",
       badge: "Office & Home",
+      image: "/jalsutra_20l_jar.png",
     },
     {
       size: "5 Ltr Jar",
@@ -61,6 +62,7 @@ function ProductsPage() {
       price: "₹50 / Jar",
       useCase: "Small kitchen spaces, picnics, emergency storage, or table-top water setups.",
       badge: "Compact Bulk",
+      image: "/jalsutra_5l_jar.png",
     },
     {
       size: "2 Ltr Bottle",
@@ -68,6 +70,7 @@ function ProductsPage() {
       price: "₹30 / Bottle",
       useCase: "Long road trips, large dinner tables, and heavy daily fitness workouts.",
       badge: "Maximum Hydration",
+      image: "/jalsutra_2l_bottle.png",
     },
     {
       size: "1.5 Ltr Bottle",
@@ -75,6 +78,7 @@ function ProductsPage() {
       price: "₹25 / Bottle",
       useCase: "Perfect travel companion for families, hikers, and active fitness gym routines.",
       badge: "Extra Volume",
+      image: "/jalsutra_2l_bottle.png",
     },
     {
       size: "1 Ltr Bottle (Pack of 8)",
@@ -83,6 +87,7 @@ function ProductsPage() {
       useCase:
         "Our flagship best seller. Reliable thirst-quencher for daily household requirements.",
       badge: "Reliable Daily Choice",
+      image: "/jalsutra_1l_bottle.png",
     },
     {
       size: "500 ml Bottle",
@@ -90,6 +95,7 @@ function ProductsPage() {
       price: "₹10 / Bottle",
       useCase: "Corporate seminars, executive board meetings, and pocket-sized quick hydration.",
       badge: "Meeting Room standard",
+      image: "/jalsutra_small_bottle.png",
     },
     {
       size: "200 ml Bottle",
@@ -97,6 +103,7 @@ function ProductsPage() {
       price: "₹6 / Bottle",
       useCase: "Bulk catering events, weddings, quick functions, and waste-reducing portion sizes.",
       badge: "Event Special",
+      image: "/jalsutra_small_bottle.png",
     },
   ];
 
@@ -131,11 +138,18 @@ function ProductsPage() {
             <Reveal
               key={p.size}
               delay={i * 0.06}
-              className="bg-card border border-white/5 p-8 rounded-lg flex flex-col justify-between hover:border-gold/25 transition-all duration-300 shadow-xl group"
+              className="bg-card border border-border p-8 rounded-lg flex flex-col justify-between hover:border-gold/25 transition-all duration-300 shadow-xl group"
             >
               <div>
-                <div className="flex justify-between items-center mb-6">
-                  <span className="text-[0.6rem] uppercase tracking-[0.2em] px-3 py-1 border border-white/10 rounded-full bg-[#030C1B] text-ivory/70">
+                <div className="aspect-square w-full rounded-lg overflow-hidden bg-muted/40 mb-6 flex items-center justify-center p-4 border border-border/30 relative">
+                  <img
+                    src={p.image}
+                    alt={p.size}
+                    className="max-h-40 md:max-h-48 max-w-full object-contain transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <div className="flex justify-between items-center mb-4">
+                  <span className="text-[0.6rem] uppercase tracking-[0.2em] px-3 py-1 border border-border rounded-full bg-muted text-foreground/70">
                     {p.badge}
                   </span>
                   <span className="text-gold font-semibold font-display text-lg">{p.price}</span>
@@ -205,7 +219,7 @@ function ProductsPage() {
 
           <Reveal
             delay={0.15}
-            className="lg:col-span-5 bg-[#051329] border border-white/5 p-8 md:p-12 rounded-xl flex flex-col justify-between text-center relative overflow-hidden"
+            className="dark-section lg:col-span-5 bg-royal-deep border border-border p-8 md:p-12 rounded-xl flex flex-col justify-between text-center relative overflow-hidden"
           >
             <div className="absolute top-0 right-0 w-[200px] h-[200px] bg-gold/5 rounded-full blur-[80px] pointer-events-none" />
             <div>

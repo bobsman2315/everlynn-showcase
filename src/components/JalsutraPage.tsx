@@ -51,10 +51,9 @@ import { type ReactNode } from "react";
 
 function SectionLabel({ num, label }: { num: string; label: string }) {
   return (
-    <div className="flex items-center gap-4 text-[0.7rem] tracking-[0.35em] uppercase mb-6">
-      <span className="text-gold font-semibold">{num}</span>
-      <span className="gold-line bg-gold h-px w-10 block" />
-      <span className="text-ivory/60">{label}</span>
+    <div className="flex items-center gap-2 text-[0.72rem] tracking-[0.35em] uppercase font-bold mb-6">
+      <span className="text-gold">{num}</span>
+      <span className="text-ivory/80">{label}</span>
     </div>
   );
 }
@@ -65,7 +64,7 @@ function Hero() {
   return (
     <section
       id="top"
-      className="relative h-screen w-full overflow-hidden flex items-center justify-center"
+      className="dark-section relative min-h-screen w-full flex flex-col items-center justify-center py-28 md:py-36 overflow-hidden"
     >
       <img
         src={HERO_BG}
@@ -75,12 +74,12 @@ function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-[#030C1B]/80 via-[#030C1B]/60 to-[#030C1B]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,#030C1B_95%)]" />
 
-      <div className="relative z-10 text-center px-6 max-w-6xl mt-12">
+      <div className="relative z-10 text-center px-6 max-w-6xl my-auto py-8">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="inline-flex items-center gap-3 px-5 py-2 border border-gold/40 rounded-full mb-8 bg-[#030C1B]/55 backdrop-blur-md"
+          className="inline-flex items-center gap-3 px-5 py-2 border border-gold/40 rounded-full mb-6 bg-[#030C1B]/55 backdrop-blur-md"
         >
           <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
           <span className="text-[0.68rem] tracking-[0.4em] uppercase text-gold font-medium">
@@ -88,7 +87,7 @@ function Hero() {
           </span>
         </motion.div>
 
-        <h1 className="font-display text-[2.2rem] sm:text-[3.2rem] md:text-[5rem] lg:text-[6rem] leading-[1.08] text-ivory max-w-5xl mx-auto">
+        <h1 className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-[4.5rem] xl:text-[5.2rem] leading-[1.08] text-ivory max-w-5xl mx-auto">
           {words.map((w, i) => (
             <motion.span
               key={i}
@@ -110,7 +109,7 @@ function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.4, duration: 1 }}
-          className="mt-8 text-ivory/80 tracking-[0.2em] text-xs sm:text-sm max-w-3xl mx-auto font-light leading-relaxed"
+          className="mt-6 text-ivory/80 tracking-[0.2em] text-xs sm:text-sm max-w-3xl mx-auto font-light leading-relaxed"
         >
           At Jalsutra, we produce a range of products: 20 ltr jars, 5 ltr jars, and bottles from
           200ml to 2 ltr. Enriched with essential minerals to support hydration and offset
@@ -121,7 +120,7 @@ function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.7, duration: 0.8 }}
-          className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <Link to="/products" className="btn-gold">
             Explore Sizes
@@ -132,7 +131,7 @@ function Hero() {
         </motion.div>
       </div>
 
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10">
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10 hidden md:flex">
         <span className="text-[0.6rem] tracking-[0.4em] uppercase text-ivory/50">Scroll</span>
         <div className="w-px h-10 bg-ivory/20 relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-4 bg-gold scroll-hint" />
@@ -171,7 +170,7 @@ function StoryHome() {
 
             <Reveal
               delay={0.3}
-              className="mt-8 flex gap-8 items-center border-t border-white/5 pt-8"
+              className="mt-8 flex gap-8 items-center border-t border-border pt-8"
             >
               <div>
                 <Link
@@ -187,9 +186,9 @@ function StoryHome() {
           <div className="lg:col-span-5 relative flex justify-center">
             <Reveal
               delay={0.3}
-              className="w-full max-w-[380px] aspect-[3/4] rounded-lg overflow-hidden border border-white/10 shadow-2xl relative group"
+              className="w-full max-w-[380px] aspect-[3/4] rounded-lg overflow-hidden border border-border shadow-2xl relative group"
             >
-              <div className="absolute inset-0 bg-gradient-to-t from-[#030C1B] via-transparent to-transparent z-10 opacity-60" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10 opacity-60" />
               <img
                 src={BOTTLE_IMG}
                 alt="Jalsutra Premium Bottled Water"
@@ -209,21 +208,24 @@ function ProductsPreview() {
       size: "20 Ltr Jar",
       desc: "Best for offices & homes. Heavy duty, reusable container.",
       price: "₹80 / Jar",
+      image: "/jalsutra_20l_jar.png",
     },
     {
       size: "1 Ltr Bottle (Pack of 8)",
       desc: "Flagship retail option. Mineral enriched, perfect for fitness.",
       price: "₹120 / Pack",
+      image: "/jalsutra_1l_bottle.png",
     },
     {
       size: "200 ml Bottle",
       desc: "Event size. Best for boardrooms, catering and weddings.",
       price: "₹6 / Bottle",
+      image: "/jalsutra_small_bottle.png",
     },
   ];
 
   return (
-    <section className="py-20 md:py-36 px-6 md:px-12 bg-ink">
+    <section className="py-20 md:py-36 px-6 md:px-12 bg-background">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16">
           <Reveal>
@@ -244,9 +246,16 @@ function ProductsPreview() {
             <Reveal
               key={p.size}
               delay={i * 0.08}
-              className="bg-card border border-white/5 p-8 rounded-lg flex flex-col justify-between hover:border-gold/20 transition-all duration-300"
+              className="bg-card border border-border p-8 rounded-lg flex flex-col justify-between hover:border-gold/30 hover:shadow-md shadow-sm transition-all duration-300"
             >
               <div>
+                <div className="aspect-square w-full rounded-lg overflow-hidden bg-muted/40 mb-6 flex items-center justify-center p-4 border border-border/30 relative">
+                  <img
+                    src={p.image}
+                    alt={p.size}
+                    className="max-h-40 md:max-h-48 max-w-full object-contain transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
                 <span className="text-gold font-semibold font-display text-lg mb-4 block">
                   {p.price}
                 </span>
@@ -275,7 +284,7 @@ function CoBrandingHome() {
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-12 gap-16 items-center">
           <div className="lg:col-span-5 order-2 lg:order-1">
-            <Reveal className="aspect-[4/5] rounded-xl overflow-hidden shadow-2xl border border-white/10 relative">
+            <Reveal className="aspect-[4/5] rounded-xl overflow-hidden shadow-2xl border border-border relative">
               <img
                 src={COBRANDING_IMG}
                 alt="Custom Co-Branded Jalsutra Water Bottles"
@@ -344,7 +353,7 @@ function FactoryHome() {
   ];
 
   return (
-    <section className="py-20 md:py-36 px-6 md:px-12 bg-ink">
+    <section className="py-20 md:py-36 px-6 md:px-12 bg-background">
       <div className="max-w-7xl mx-auto font-light">
         <div className="grid lg:grid-cols-12 gap-16 items-center">
           <div className="lg:col-span-6">
@@ -384,7 +393,7 @@ function FactoryHome() {
           <div className="lg:col-span-6">
             <Reveal
               delay={0.2}
-              className="aspect-[16/10] overflow-hidden rounded-xl border border-white/10 shadow-2xl"
+              className="aspect-[16/10] overflow-hidden rounded-xl border border-border shadow-2xl"
             >
               <img
                 src={FACTORY_IMG}
@@ -486,7 +495,7 @@ function ContactHome() {
           </div>
 
           <div className="lg:col-span-7">
-            <Reveal className="bg-card border border-white/5 rounded-xl p-8 md:p-12 shadow-2xl relative">
+            <Reveal className="bg-card border border-border rounded-xl p-8 md:p-12 shadow-2xl relative">
               <h3 className="font-display text-2xl md:text-3xl text-ivory mb-2">Request a Quote</h3>
               <p className="text-xs text-ivory/50 mb-8">
                 Fill out the quick questionnaire below and we will send a customized proposal.
@@ -508,7 +517,7 @@ function ContactHome() {
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="e.g. Indrasish"
-                      className="w-full bg-[#030C1B] border border-white/10 rounded px-4 py-3 text-sm text-ivory focus:outline-none focus:border-gold/50"
+                      className="w-full bg-muted border border-border rounded px-4 py-3 text-sm text-foreground focus:outline-none focus:border-gold/50"
                     />
                   </div>
                   <div className="space-y-2">
@@ -525,7 +534,7 @@ function ContactHome() {
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       placeholder="e.g. 09674341297"
-                      className="w-full bg-[#030C1B] border border-white/10 rounded px-4 py-3 text-sm text-ivory focus:outline-none focus:border-gold/50"
+                      className="w-full bg-muted border border-border rounded px-4 py-3 text-sm text-foreground focus:outline-none focus:border-gold/50"
                     />
                   </div>
                 </div>
@@ -544,7 +553,7 @@ function ContactHome() {
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="e.g. company@gmail.com"
-                    className="w-full bg-[#030C1B] border border-white/10 rounded px-4 py-3 text-sm text-ivory focus:outline-none focus:border-gold/50"
+                    className="w-full bg-muted border border-border rounded px-4 py-3 text-sm text-foreground focus:outline-none focus:border-gold/50"
                   />
                 </div>
 
@@ -582,14 +591,14 @@ function CredentialsHome() {
   ];
 
   return (
-    <section className="py-16 px-6 md:px-12 bg-ink border-y border-white/5">
+    <section className="py-16 px-6 md:px-12 bg-background border-y border-border">
       <div className="max-w-7xl mx-auto">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {credentials.map((c, i) => (
             <Reveal
               key={c.title}
               delay={i * 0.08}
-              className="bg-[#030C1B] border border-white/5 rounded-lg p-6 hover:border-gold/20 transition-all text-center"
+              className="bg-card border border-border rounded-lg p-6 hover:border-gold/30 shadow-sm hover:shadow-md transition-all text-center"
             >
               <div className="w-10 h-10 rounded-full border border-gold/30 flex items-center justify-center text-gold mx-auto mb-4 text-sm font-display">
                 ✦

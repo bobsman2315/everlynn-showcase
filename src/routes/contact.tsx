@@ -247,7 +247,7 @@ function ContactPage() {
 
           {/* Form Side */}
           <div className="lg:col-span-7">
-            <Reveal className="bg-card border border-white/5 rounded-xl p-8 md:p-12 shadow-2xl relative">
+            <Reveal className="bg-card border border-border rounded-xl p-8 md:p-12 shadow-2xl relative">
               <h3 className="font-display text-2xl md:text-3xl text-ivory mb-2">Submit a Ticket</h3>
               <p className="text-xs text-ivory/50 font-light mb-8">
                 Send us details of your requirements, and a customer manager will reply promptly.
@@ -269,7 +269,7 @@ function ContactPage() {
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="e.g. Indrasish"
-                      className="w-full bg-[#030C1B] border border-white/10 rounded px-4 py-3 text-sm text-ivory focus:outline-none focus:border-gold/50"
+                      className="w-full bg-muted border border-border rounded px-4 py-3 text-sm text-foreground focus:outline-none focus:border-gold/50"
                     />
                   </div>
                   <div className="space-y-2">
@@ -286,7 +286,7 @@ function ContactPage() {
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       placeholder="e.g. 09674341297"
-                      className="w-full bg-[#030C1B] border border-white/10 rounded px-4 py-3 text-sm text-ivory focus:outline-none focus:border-gold/50"
+                      className="w-full bg-muted border border-border rounded px-4 py-3 text-sm text-foreground focus:outline-none focus:border-gold/50"
                     />
                   </div>
                 </div>
@@ -306,7 +306,7 @@ function ContactPage() {
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="e.g. client@gmail.com"
-                      className="w-full bg-[#030C1B] border border-white/10 rounded px-4 py-3 text-sm text-ivory focus:outline-none focus:border-gold/50"
+                      className="w-full bg-muted border border-border rounded px-4 py-3 text-sm text-foreground focus:outline-none focus:border-gold/50"
                     />
                   </div>
                   <div className="space-y-2">
@@ -320,7 +320,7 @@ function ContactPage() {
                       id="inquiryType"
                       value={formData.inquiryType}
                       onChange={(e) => setFormData({ ...formData, inquiryType: e.target.value })}
-                      className="w-full bg-[#030C1B] border border-white/10 rounded px-4 py-3 text-sm text-ivory focus:outline-none focus:border-gold/50 appearance-none cursor-pointer"
+                      className="w-full bg-muted border border-border rounded px-4 py-3 text-sm text-foreground focus:outline-none focus:border-gold/50 appearance-none cursor-pointer"
                     >
                       <option value="Co-Branding">Custom Co-Branded Labeling</option>
                       <option value="Bulk 20L Jars">Bulk 20L Jars (Home/Office)</option>
@@ -343,7 +343,7 @@ function ContactPage() {
                     value={formData.quantity}
                     onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
                     placeholder="e.g. 50 jars per week / 800 bottles for wedding"
-                    className="w-full bg-[#030C1B] border border-white/10 rounded px-4 py-3 text-sm text-ivory focus:outline-none focus:border-gold/50"
+                    className="w-full bg-muted border border-border rounded px-4 py-3 text-sm text-foreground focus:outline-none focus:border-gold/50"
                   />
                 </div>
 
@@ -360,7 +360,7 @@ function ContactPage() {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Describe delivery frequency, locations, custom design themes, or timelines..."
-                    className="w-full bg-[#030C1B] border border-white/10 rounded px-4 py-3 text-sm text-ivory focus:outline-none focus:border-gold/50 resize-none"
+                    className="w-full bg-muted border border-border rounded px-4 py-3 text-sm text-foreground focus:outline-none focus:border-gold/50 resize-none"
                   />
                 </div>
 

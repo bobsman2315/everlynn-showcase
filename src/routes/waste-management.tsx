@@ -150,11 +150,11 @@ function WasteManagementPage() {
             </p>
           </Reveal>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5 border border-white/5">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border border border-border">
             {steps.map((s) => (
               <Reveal
                 key={s.n}
-                className="bg-[#030C1B] p-8 md:p-10 hover:bg-card/40 transition-colors"
+                className="bg-card p-8 md:p-10 hover:bg-muted/50 transition-colors"
               >
                 <div className="font-display text-3xl text-gold/25 font-bold mb-4">{s.n}</div>
                 <h4 className="text-lg font-display text-ivory mb-2">{s.t}</h4>
@@ -166,7 +166,7 @@ function WasteManagementPage() {
 
         {/* Section 3: Sustainability stats */}
         <div className="grid sm:grid-cols-3 gap-8 mt-20 md:mt-32">
-          <Reveal className="bg-card border border-white/5 p-8 rounded-lg text-center">
+          <Reveal className="bg-card border border-border p-8 rounded-lg text-center">
             <div className="w-10 h-10 bg-gold/10 border border-gold/30 rounded-full flex items-center justify-center text-gold mx-auto mb-4">
               <Recycle size={20} />
             </div>
@@ -176,7 +176,7 @@ function WasteManagementPage() {
             </p>
           </Reveal>
 
-          <Reveal delay={0.1} className="bg-card border border-white/5 p-8 rounded-lg text-center">
+          <Reveal delay={0.1} className="bg-card border border-border p-8 rounded-lg text-center">
             <div className="w-10 h-10 bg-gold/10 border border-gold/30 rounded-full flex items-center justify-center text-gold mx-auto mb-4">
               <Settings size={20} />
             </div>
@@ -187,7 +187,7 @@ function WasteManagementPage() {
             </p>
           </Reveal>
 
-          <Reveal delay={0.2} className="bg-card border border-white/5 p-8 rounded-lg text-center">
+          <Reveal delay={0.2} className="bg-card border border-border p-8 rounded-lg text-center">
             <div className="w-10 h-10 bg-gold/10 border border-gold/30 rounded-full flex items-center justify-center text-gold mx-auto mb-4">
               <Sparkles size={20} />
             </div>

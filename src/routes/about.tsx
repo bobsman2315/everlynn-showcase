@@ -165,8 +165,8 @@ function AboutPage() {
         </div>
 
         {/* Section 3: Plant Scale & Automation */}
-        <div className="mt-20 md:mt-32 rounded-xl overflow-hidden border border-white/5 bg-[#051329] p-8 md:p-16 relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-[#030C1B] to-transparent z-10" />
+        <div className="dark-section mt-20 md:mt-32 rounded-xl overflow-hidden border border-border bg-royal-deep p-8 md:p-16 relative">
+          <div className="absolute inset-0 bg-gradient-to-r from-background to-transparent z-10" />
           <img
             src="/jalsutra_factory.png"
             alt="Bottling factory automation machinery"

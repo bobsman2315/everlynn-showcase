@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 
 export function Footer() {
   return (
-    <footer className="bg-royal-deep border-t border-white/5 px-6 md:px-12 pt-20 pb-8 text-sm text-ivory/50">
+    <footer className="dark-section bg-royal-deep border-t border-white/5 px-6 md:px-12 pt-20 pb-8 text-sm text-ivory/50">
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-12 gap-12">
           <div className="md:col-span-5">
@@ -10,11 +10,8 @@ export function Footer() {
               <img
                 src="/jalsutra_logo.png"
                 alt="Jalsutra Logo"
-                className="h-8 w-auto object-contain"
+                className="h-12 md:h-16 w-auto object-contain"
               />
-              <span className="font-display text-lg font-bold tracking-wider text-ivory">
-                JALSUTRA
-              </span>
             </div>
             <p className="mt-6 text-ivory/60 font-light italic max-w-sm text-xs leading-relaxed">
               Pure Drinking Water. Enriched with minerals, bottled in a fully automated, untouched
