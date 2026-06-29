@@ -29,15 +29,11 @@ export function Nav() {
     { to: "/contact", label: "Contact Us" },
   ];
 
-  const isDarkNavbar = isHome && !isScrolled;
-
   return (
     <header
-      className={
-        isDarkNavbar
-          ? "dark-section fixed top-0 inset-x-0 z-50 px-6 md:px-12 py-5 flex items-center justify-between transition-all duration-300 bg-transparent border-b border-transparent shadow-none"
-          : "fixed top-0 inset-x-0 z-50 px-6 md:px-12 py-3 md:py-4 flex items-center justify-between transition-all duration-300 backdrop-blur-md bg-background/85 border-b border-border shadow-sm"
-      }
+      className={`fixed top-0 inset-x-0 z-50 px-6 md:px-12 flex items-center justify-between transition-all duration-300 backdrop-blur-md bg-white/95 border-b border-border shadow-sm ${
+        isScrolled ? "py-3 md:py-4" : "py-4 md:py-5"
+      }`}
     >
       <Link to="/" className="flex items-center gap-3 z-50">
         <img

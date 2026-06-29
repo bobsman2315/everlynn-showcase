@@ -128,7 +128,7 @@ function ContactPage() {
     },
     {
       q: "What is the minimum volume for co-branded orders?",
-      a: "For custom labeled bottles (200ml, 500ml, or 1L), our minimum batch run is 500 bottles. We offer discount tiers for corporate monthly packages or wedding events.",
+      a: "For custom labeled bottles (250ml, 500ml, or 1L), our minimum batch run is 500 bottles. We offer discount tiers for corporate monthly packages or wedding events.",
     },
     {
       q: "Are the 20L jars chemical-washed before refills?",

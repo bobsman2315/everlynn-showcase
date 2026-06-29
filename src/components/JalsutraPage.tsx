@@ -16,7 +16,6 @@ import { toast } from "sonner";
 
 const HERO_BG = "/jalsutra_hero_bg.png";
 const BOTTLE_IMG = "/jalsutra_bottle.png";
-const COBRANDING_IMG = "/jalsutra_cobranding.png";
 const FACTORY_IMG = "/jalsutra_factory.png";
 
 const fadeUp = {
@@ -112,7 +111,7 @@ function Hero() {
           className="mt-6 text-ivory/80 tracking-[0.2em] text-xs sm:text-sm max-w-3xl mx-auto font-light leading-relaxed"
         >
           At Jalsutra, we produce a range of products: 20 ltr jars, 5 ltr jars, and bottles from
-          200ml to 2 ltr. Enriched with essential minerals to support hydration and offset
+          250ml to 2 ltr. Enriched with essential minerals to support hydration and offset
           dehydration.
         </motion.p>
 
@@ -217,10 +216,10 @@ function ProductsPreview() {
       image: "/jalsutra_1l_bottle.png",
     },
     {
-      size: "200 ml Bottle",
+      size: "250 ml Bottle",
       desc: "Event size. Best for boardrooms, catering and weddings.",
       price: "₹6 / Bottle",
-      image: "/jalsutra_small_bottle.png",
+      image: "/jalsutra_250ml_bottle.jpg",
     },
   ];
 
@@ -278,72 +277,7 @@ function ProductsPreview() {
   );
 }
 
-function CoBrandingHome() {
-  return (
-    <section className="py-20 md:py-36 px-6 md:px-12 bg-royal-deep relative overflow-hidden">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-12 gap-16 items-center">
-          <div className="lg:col-span-5 order-2 lg:order-1">
-            <Reveal className="aspect-[4/5] rounded-xl overflow-hidden shadow-2xl border border-border relative">
-              <img
-                src={COBRANDING_IMG}
-                alt="Custom Co-Branded Jalsutra Water Bottles"
-                className="w-full h-full object-cover"
-              />
-            </Reveal>
-          </div>
 
-          <div className="lg:col-span-7 order-1 lg:order-2 font-light">
-            <Reveal>
-              <SectionLabel num="III." label="Our USP" />
-              <h2 className="font-display text-4xl md:text-6xl leading-[1.1]">
-                Custom Co-Branding <br />
-                <em className="text-gold not-italic">for your event.</em>
-              </h2>
-              <p className="mt-6 text-ivory/80 leading-relaxed text-sm md:text-base max-w-xl">
-                Jalsutra stands out by offering dedicated co-branding solutions. We partner with
-                luxury hotels, premium corporate offices, restaurants, weddings and high-profile
-                events to print customized label water bottles.
-              </p>
-            </Reveal>
-
-            <div className="mt-10 grid sm:grid-cols-2 gap-6">
-              <Reveal delay={0.1} className="flex gap-4">
-                <div className="w-10 h-10 shrink-0 bg-gold/10 border border-gold/30 rounded-lg flex items-center justify-center text-gold">
-                  <Award size={18} />
-                </div>
-                <div>
-                  <h4 className="text-base font-semibold text-ivory">Custom Labels</h4>
-                  <p className="text-xs text-ivory/60 mt-1 font-light">
-                    High fidelity designs carrying your business logo and colors.
-                  </p>
-                </div>
-              </Reveal>
-
-              <Reveal delay={0.2} className="flex gap-4">
-                <div className="w-10 h-10 shrink-0 bg-gold/10 border border-gold/30 rounded-lg flex items-center justify-center text-gold">
-                  <Layers size={18} />
-                </div>
-                <div>
-                  <h4 className="text-base font-semibold text-ivory">Statewide Supply</h4>
-                  <p className="text-xs text-ivory/60 mt-1 font-light">
-                    Direct prompt delivery from our factory to your event venue.
-                  </p>
-                </div>
-              </Reveal>
-            </div>
-
-            <Reveal delay={0.3} className="mt-12">
-              <Link to="/contact" className="btn-gold">
-                Inquire For Custom Labeling
-              </Link>
-            </Reveal>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
 
 function FactoryHome() {
   const stats = [
@@ -358,7 +292,7 @@ function FactoryHome() {
         <div className="grid lg:grid-cols-12 gap-16 items-center">
           <div className="lg:col-span-6">
             <Reveal>
-              <SectionLabel num="IV." label="Industrial Capacity" />
+              <SectionLabel num="III." label="Industrial Capacity" />
               <h2 className="font-display text-4xl md:text-6xl leading-[1.1] mb-6">
                 One of Eastern India's <em className="text-gold not-italic">largest facilities.</em>
               </h2>
@@ -444,7 +378,7 @@ function ContactHome() {
           <div className="lg:col-span-5 flex flex-col justify-between">
             <div>
               <Reveal>
-                <SectionLabel num="V." label="Order & Inquire" />
+                <SectionLabel num="IV." label="Order & Inquire" />
                 <h2 className="font-display text-4xl md:text-6xl leading-[1.1] mb-6">
                   Ready to partner <br />
                   with <em className="text-gold not-italic">Jalsutra?</em>
@@ -619,7 +553,6 @@ export default function JalsutraPage() {
       <Hero />
       <StoryHome />
       <ProductsPreview />
-      <CoBrandingHome />
       <FactoryHome />
       <CredentialsHome />
       <ContactHome />

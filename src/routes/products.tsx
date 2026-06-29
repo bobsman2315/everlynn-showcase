@@ -9,7 +9,7 @@ export const Route = createFileRoute("/products")({
       {
         name: "description",
         content:
-          "Explore Jalsutra's packaged drinking water sizes: 20L jars, 5L jars, and bottles from 200ml to 2L. Clean mineral composition and pricing.",
+          "Explore Jalsutra's packaged drinking water sizes: 20L jars, 5L jars, and bottles from 250ml to 2L. Clean mineral composition and pricing.",
       },
     ],
   }),
@@ -78,7 +78,7 @@ function ProductsPage() {
       price: "₹25 / Bottle",
       useCase: "Perfect travel companion for families, hikers, and active fitness gym routines.",
       badge: "Extra Volume",
-      image: "/jalsutra_2l_bottle.png",
+      image: "/jalsutra_turquoise_bottle.png",
     },
     {
       size: "1 Ltr Bottle (Pack of 8)",
@@ -98,12 +98,12 @@ function ProductsPage() {
       image: "/jalsutra_small_bottle.png",
     },
     {
-      size: "200 ml Bottle",
-      volume: "200 ml",
+      size: "250 ml Bottle",
+      volume: "250 ml",
       price: "₹6 / Bottle",
       useCase: "Bulk catering events, weddings, quick functions, and waste-reducing portion sizes.",
       badge: "Event Special",
-      image: "/jalsutra_small_bottle.png",
+      image: "/jalsutra_250ml_bottle.jpg",
     },
   ];
 
