@@ -85,7 +85,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="http://www.facebook.com/jal.sutra"
+                  href="https://www.facebook.com/jalsutrawater/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-gold transition-colors"
